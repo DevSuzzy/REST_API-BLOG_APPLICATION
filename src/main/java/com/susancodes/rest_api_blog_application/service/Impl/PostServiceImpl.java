@@ -5,12 +5,13 @@ import com.susancodes.rest_api_blog_application.payload.PostDto;
 import com.susancodes.rest_api_blog_application.repository.PostRepository;
 import com.susancodes.rest_api_blog_application.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired; // Add this import
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
-    private PostRepository postRepository;
+    private final PostRepository postRepository; // Make postRepository final
 
     @Override
     public PostDto createPost(PostDto postDto) {
