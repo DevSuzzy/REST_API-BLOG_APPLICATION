@@ -1,11 +1,13 @@
 package com.susancodes.rest_api_blog_application.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.HashSet;
+import java.util.Set;
+
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,5 +26,9 @@ public class Post {
     private String description;
     @Column(name = "content", nullable = false)
     private String content;
+
+
+   @OneToMany (mappedBy = "post", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Comment> comments = new HashSet<>();
 
 }
